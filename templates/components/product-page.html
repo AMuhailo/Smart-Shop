@@ -93,10 +93,13 @@
                                 <tr class="d-flex flex-column">
                                     <td class="w-25 flex-shrink-1 border border-0 text-secondary">Quantity</td>
                                     <td class="w-75 border border-0 text-secondary">
-                                        <form method="post">
+                                        <form action="{% url 'cart:cart_add' product.id%}" method="post">
                                             <div class="input-group mb-3 w-50">
+                                                {% csrf_token %}
                                                 <button class="btn btn-secondary rounded-0" type="button" id="button-addon1" data-action="minus">-</button>
-                                                <input type="text" class="form-control form-number" value="1"/>
+                                                {% for field in cart_form %}
+                                                    {{ field}}
+                                                {% endfor %}
                                                 <button class="btn btn-secondary rounded-0" type="button" id="button-addon2" data-action="plus">+</button>
                                             </div>  
                                             <input type="submit" value="Add to cart" class="btn btn-success rounded-0 w-50"/>

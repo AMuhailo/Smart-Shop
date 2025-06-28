@@ -2,6 +2,7 @@ from unicodedata import category
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView
 from .models import Category , Product
+from cart.form import CartField
 # Create your views here.
 
 class CategoryListView(ListView):
@@ -36,6 +37,7 @@ class ProductListView(DetailView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['cart_form'] = CartField()
         context["categories"] = Category.objects.all()
         return context
     

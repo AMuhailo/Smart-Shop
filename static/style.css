@@ -7,6 +7,10 @@
     linear-gradient(to top, rgb(1,2,3), transparent), 
     url("plantation.png");
     height: 60vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
 }
 
 .product-page{
@@ -15,7 +19,7 @@
     url("breadcrumbs.png");
     height: 30vh;
     background-size: cover;
-    background-repeat: repeat;
+    background-position: center;
 }
 
 .h-product{
@@ -181,4 +185,13 @@
 
 .hidden{
     display: none;
+}
+
+.img-cart{
+    display: block;
+    width: 12rem;
+}
+
+.image-th{
+    width: 15rem;
 }
