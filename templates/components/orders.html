@@ -1,0 +1,156 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid product-page">
+        <div class="div-product d-flex justify-content-center align-items-center h-100 flex-column ">
+            <div class="product-blur h-50 w-25"></div>
+            <div class="d-flex justify-content-center align-items-center h-50 flex-column inner-product">
+                <h1 class="fw-5 text-white text-center h-product">Order goods</h1>
+                <h6 class="fw-5 text-white text-center h-nav-product">
+                    <nav style="--bs-breadcrumb-divider: '>'; color: white;" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'categories_url' %}" class="breadcrumb-nav-page"><i class="bi bi-house-fill"></i></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a href="{% url 'cart:cart_detail' %}" class="breadcrumb-nav-page fs-6">Cart</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a class="breadcrumb-nav-page fs-6">Orders</a></li>
+                        </ol>
+                    </nav>
+                </h6>
+            </div>
+        </div>
+    </div>
+    <div class="container-lg text-start p-5">
+        <form class="{% url 'orders:order_create'%}" method="POST">
+            <div class="row">
+                <h4 class="text-start pb-2 description-text">Orders Goods</h4>
+                <div class='col-6'>
+                    <div class="card border-0">
+                        <div class="card-header bg-body-secondary rounded-0 header-card">
+                            <div class='rect-icon'>
+                                <i class="bi bi-person-fill-add"></i>
+                            </div>
+                            <p class='order-personal-data ps-5 text-uppercase'>Personal data</p>
+                        </div>
+                        <div class="card-body">
+                            {% csrf_token %}
+                            <div class="row gap-3">
+                                <div class="col">
+                                    {{ form.first_name }}
+                                </div>
+                                <div class="col">
+                                    {{ form.last_name }}
+                                </div>
+                                <div class="col-12">
+                                    {{ form.email }}
+                                </div>
+                                <div class="col-12">
+                                    {{ form.number }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-header bg-body-secondary rounded-0 header-card">
+                            <div class='rect-icon'>
+                                <i class="bi bi-send-fill"></i>
+                            </div>
+                            <p class='order-personal-data ps-5 text-uppercase'>Delivery method</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gap-3">
+                                <div class="col-12">
+                                    {% for radio in form.post %}
+                                        <div class="form-check">
+                                            {{ radio.tag }}
+                                            <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                                {% if radio.choice_label == 'UrkPost'%}
+                                                    <strong>Ukr Poshta</strong>. Goods are delivered within 3-6 days throughout Ukraine. Shipping only upon prepayment.
+                                                {% else %}
+                                                    <strong>Nova Poshta</strong>. Goods are delivered within 1-2 days throughout Ukraine.
+                                                {% endif %}
+                                            </label>
+                                        </div>                                        
+                                    {% endfor %}
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        {{ form.city }}
+                                        <label for="floatingInputValue2">City</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        {{ form.postal_code }}
+                                        <label for="floatingInputValue1">Postal Code</label>
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class='col-6'>
+                    <div class="card border-0">
+                        <div class="card-header bg-body-secondary rounded-0 header-card">
+                            <div class='rect-icon'>
+                                <i class="bi bi-cart-dash"></i>
+                            </div>
+                            <p class='order-personal-data ps-5 text-uppercase'>Payment card</p>
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Unite Price</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for item in cart %}
+                                    <tr>
+                                        <td>{{ item.product.name}}</td>
+                                        <td>{{ item.quantity}}</td>
+                                        <td>{{ item.price }}$</td>
+                                        <td>{{ item.total_price }}$</td>
+                                    </tr>
+                                    {% endfor %}
+                                    <tr>
+                                        <td colspan="3"><strong>Total Price</strong></td>
+                                        <td>{{ cart.get_total_price}}$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-header bg-body-secondary rounded-0 header-card">
+                            <div class='rect-icon'>
+                                <i class="bi bi-credit-card-2-back-fill"></i>
+                            </div>
+                            <p class='order-personal-data ps-5 text-uppercase'>Payment method</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gap-3">
+                                <div class="col-12">
+                                    {% for radio in form.paid %}
+                                        <div class="form-check">
+                                            {{ radio.tag }}
+                                            <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                                {% if radio.choice_label == 'Card'%}
+                                                    Payment Visa, MasterCard
+                                                {% else %}
+                                                    Cash on delivery
+                                                {% endif %}
+                                            </label>
+                                        </div>                                        
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <input type='submit' class='btn btn-secondary w-25 ms-auto rounded-0 text-uppercase' value='Confirm order'/>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

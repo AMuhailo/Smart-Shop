@@ -79,7 +79,7 @@
                     </div>
                     <div class='col-6'>
                         <p class='text-end'>
-                            <a class='btn btn-sm btn-secondary rounded-0 w-25' href="{% url 'categories_url'%}">Checkout</a>
+                            <a class='btn btn-sm btn-secondary rounded-0 w-25' href="{% url 'orders:order_create'%}">Checkout</a>
                         </p>
                     </div>
                 </div>
@@ -91,7 +91,6 @@
                     <p class='text-center'>
                         <a class='btn btn-sm btn-secondary rounded-0 w-25' href="{% url 'categories_url'%}">Continue</a>
                     </p>
-                    
                 </div>
             {% endif %}
         </div>

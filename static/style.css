@@ -195,3 +195,29 @@
 .image-th{
     width: 15rem;
 }
+
+.card-header{
+    position: relative;
+    height: 3rem;
+    max-height: 100%;
+    background-color: rgb(105, 105, 105);
+}
+
+.rect-icon{
+    position: absolute;
+    top:0;
+    left: 0;
+    background-color: rgb(105, 105, 105);
+    height: 100%;
+    width: 3rem;
+    text-align: center;
+    align-content: center;
+    color: white;
+    font-size: 24px;
+}
+
+.order-personal-data{
+    align-content: center;
+    color: black;
+    font-weight: 500;
+}
