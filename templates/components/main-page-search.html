@@ -5,10 +5,10 @@
 
     <div class="container-fluid text-center p-5">
         <div class="row">
-            {% include "components/include/aside.html" with category=category categories=categories form_search=form_search%}
+            {% include "components/include/aside.html" with category=category categories=categories form_search=form query=query %}
             <div class="col-md-9 my-4">
                 <div class="row row-cols-2 row-cols-lg-5 row-cols-md-4 row-cols-sm-3 gap-2 gap-lg-5">
-                    {% for product in products %}
+                    {% for product in results %}
                     <div class="col-3">
                         <div class="flip-card">
                             <div class="flip-card-inner">
@@ -29,29 +29,7 @@
                     </div>
                     {% endfor %}
                 </div>
-                <nav aria-label="Page navigation example" class="my-3">
-                    <ul class="pagination">
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+                
             </div>
         </div>
     </div>

@@ -2,6 +2,8 @@
     <h4 class="text-start pb-2 what-to-buy">
         {% if category %}
             {{ category }}
+        {% elif query %}
+            Query: {{ query }}
         {% else %}
             What to buy
         {% endif %}
@@ -16,15 +18,16 @@
             <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                     <div class="col">
-                        <label class="visually-hidden" for="specificSizeInputGroupSearch">Search</label>
-                        <div class="input-group">
-                            <button type="submit" class="border search-btn">      
-                                <i class="bi bi-search"></i>
-                            </button>
-                            <form action="" method="get">
-                                <input type="text" class="form-control rounded-0 rounded-end-3" id="specificSizeInputGroupSearch" placeholder="Search...">
-                            </form>
-                        </div>
+                        <label class="visually-hidden" for="searchField">Search</label>
+                        
+                            <form action="{% url 'search_field' %}" method="get">
+                                <div class="input-group">
+                                <button type="submit" class="border search-btn">      
+                                    <i class="bi bi-search"></i>
+                                </button>
+                                {{ form_search.query}}
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

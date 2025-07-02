@@ -1,10 +1,9 @@
-from unicodedata import category
 from django.shortcuts import redirect, render
-from django.views.decorators.http import require_POST
+from django.views.decorators.http import require_POST, require_GET
 from django.utils import timezone
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView
-
-from shop.forms import CouponField
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from shop.forms import CouponField, SearchField
 from .models import Category, Coupon , Product
 from cart.form import CartField
 # Create your views here.
@@ -29,6 +28,7 @@ class CategoryListView(ListView):
         context = super().get_context_data(**kwargs)
         context["categories"] = Category.objects.all()
         context['category'] = self.category 
+        context['form_search'] = SearchField()
         return context
     
 
@@ -45,7 +45,28 @@ class ProductListView(DetailView):
         context["categories"] = Category.objects.all()
         return context
     
+def search_field(request):
+    query = None 
+    results = []
+    form = SearchField()
 
+    if 'query' in request.GET:
+        form = SearchField(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            search_vector = SearchVector('name', 'description')
+            seach_query = SearchQuery(query)
+            results = Product.objects.annotate(
+                search=search_vector,
+                rank = SearchRank(search_vector, seach_query)
+            ).filter(search=seach_query).order_by('-rank')
+    context = {
+        'categories':Category.objects.all(),
+        'form': form,
+        'query': query,
+        'results': results
+    }
+    return render(request, 'components/main-page-search.html', context)
 
 @require_POST
 def coupon_apply(request):
@@ -58,4 +79,4 @@ def coupon_apply(request):
             request.session['coupon_id'] = coupon.id
         except:
             request.session['coupon_id'] = None
-    return redirect('cart:cart_detail')    
+    return redirect('cart:cart_detail')
