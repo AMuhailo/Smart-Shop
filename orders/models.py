@@ -15,7 +15,7 @@ class Order(models.Model):
         ('delivery','Delivery'),
     ]
     coupons = models.ForeignKey(Coupon, on_delete = models.SET_NULL, blank = True, null = True, related_name = 'orders_coupons')
-    discount = models.IntegerField(default = 0, validators = [MinValueValidator(0),MaxValueValidator(100)])
+    discount = models.IntegerField(default = 0, blank = True, null = True, validators = [MinValueValidator(0),MaxValueValidator(100)])
     first_name = models.CharField(max_length = 100)
     last_name = models.CharField(max_length = 100)
     email = models.EmailField()

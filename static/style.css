@@ -189,7 +189,8 @@
 
 .img-cart{
     display: block;
-    width: 12rem;
+    width: 8rem;
+    margin: 0 auto;
 }
 
 .image-th{
