@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.urls import reverse
 from .models import Order, OrderProduct 
 from cart.cart import Cart
 from .forms import OrderAdd
@@ -21,7 +22,8 @@ def order_create(request):
         if order.paid == "delivery":
             return redirect('orders:order_done')
         else:
-            return HttpResponse('Card')
+            request.session['order_id'] = order.id
+            return redirect(reverse('payment:process'))
             
     else:
         form = OrderAdd()

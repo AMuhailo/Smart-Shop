@@ -8,7 +8,7 @@ class OrderProductInLine(admin.TabularInline):
     
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name', 'email','number','postal_code','city', 'paid','created', 'updated'] 
-    list_filter = ['paid']
+    list_display = ['first_name', 'last_name', 'email','number','postal_code','city','post', 'paid','created', 'updated', 'payable'] 
+    list_filter = ['post','paid','payable']
     date_hierarchy = 'created'
     inlines = [OrderProductInLine]

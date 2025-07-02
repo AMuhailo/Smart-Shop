@@ -11,9 +11,8 @@ class Order(models.Model):
     ]
     PAID_USE = [
         ('card','Card'),
-        ('delivery','   '),
+        ('delivery','Delivery'),
     ]
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     first_name = models.CharField(max_length = 100)
     last_name = models.CharField(max_length = 100)
     email = models.EmailField()
@@ -25,15 +24,16 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now = True)
     paid = models.CharField(choices = PAID_USE, blank = False, default = 'card') 
     
+    payable = models.BooleanField(default = False)
     class Meta:
         ordering = ['-created']
         indexes = [models.Index(fields = ['-created'])]
         
     def __str__(self):
-        return f"Order №{str(self.id)[-4]}"
+        return f"Order №{str(self.id)}"
     
     def get_total_cost(self):
-        return sum(item.get_cost for item in self.products.all())
+        return sum(item.get_cost() for item in self.products.all())
     
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete = models.CASCADE, related_name = 'products')
@@ -44,7 +44,7 @@ class OrderProduct(models.Model):
     
     
     def __str__(self):
-        return self.order
+        return f"{self.pk}"
     
     def get_cost(self):
         return self.price * self.quantity

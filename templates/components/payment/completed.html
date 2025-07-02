@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container-fluid product-page">
+        <div class="div-product d-flex justify-content-center align-items-center h-100 flex-column ">
+            <div class="product-blur h-50 w-25"></div>
+            <div class="d-flex justify-content-center align-items-center h-50 flex-column inner-product">
+                <h1 class="fw-5 text-white text-center h-product">Complete Paid</h1>
+                <h6 class="fw-5 text-white text-center h-nav-product">
+                    <nav style="--bs-breadcrumb-divider: '>'; color: white;" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'categories_url' %}" class="breadcrumb-nav-page"><i class="bi bi-house-fill"></i></a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a class="breadcrumb-nav-page fs-6">Complete Paid</a></li>
+                        </ol>
+                    </nav>
+                </h6>
+            </div>
+        </div>
+    </div>
+    <div class="container-lg text-start p-5">
+        <div class='complete-card'>
+            <h4 class="text-center pb-2 text-success description-text">Successful Paid</h4>
+            <p class='text-center text-secondary'>Payment was successful, wait for your ordery</p>
+            <p class='text-center'>
+                <a class='btn btn-sm btn-outline-secondary rounded-0 w-25' href="{% url 'categories_url'%}">Continue</a>
+            </p>
+        </div>
+    </div>
+{% endblock content %}
