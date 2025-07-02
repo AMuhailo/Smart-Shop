@@ -1,7 +1,11 @@
 from unicodedata import category
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.views.decorators.http import require_POST
+from django.utils import timezone
 from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView
-from .models import Category , Product
+
+from shop.forms import CouponField
+from .models import Category, Coupon , Product
 from cart.form import CartField
 # Create your views here.
 
@@ -42,3 +46,16 @@ class ProductListView(DetailView):
         return context
     
 
+
+@require_POST
+def coupon_apply(request):
+    now = timezone.now()
+    form = CouponField(request.POST)
+    if form.is_valid():
+        code = form.cleaned_data['code']
+        try:
+            coupon = Coupon.objects.get(code__iexact = code, valid_from__lte = now,valid_to__gte = now, active = True)
+            request.session['coupon_id'] = coupon.id
+        except:
+            request.session['coupon_id'] = None
+    return redirect('cart:cart_detail')    

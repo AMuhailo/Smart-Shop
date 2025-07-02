@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 # Create your models here.
 class Category(models.Model):
@@ -45,3 +46,13 @@ class Product(models.Model):
     
     def __str__(self):
         return f"{self.name}"
+    
+class Coupon(models.Model):
+    code = models.CharField(max_length=100, unique = True)
+    valid_from = models.DateTimeField()
+    valid_to = models.DateTimeField()
+    discount = models.IntegerField(validators = [MinValueValidator(0),MaxValueValidator(100)], help_text = 'Percantage value (0 to 100)')
+    active = models.BooleanField()
+    
+    def __str__(self):
+        return f"{self.code}"

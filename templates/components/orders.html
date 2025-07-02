@@ -111,12 +111,18 @@
                                         <td>{{ item.product.name}}</td>
                                         <td>{{ item.quantity}}</td>
                                         <td>{{ item.price }}$</td>
-                                        <td>{{ item.total_price }}$</td>
+                                        <td>{{ item.total_price|floatformat:2 }}$</td>
                                     </tr>
                                     {% endfor %}
+                                    {% if cart.coupon %}
+                                        <tr>
+                                            <td colspan="3">Discount <strong>-{{cart.coupon.discount}}%</strong></td>
+                                            <td>-{{ cart.get_discount|floatformat:2}}$</td>
+                                        </tr>
+                                    {% endif %}
                                     <tr>
                                         <td colspan="3"><strong>Total Price</strong></td>
-                                        <td>{{ cart.get_total_price}}$</td>
+                                        <td>{{ cart.get_total_discount_price|floatformat:2}}$</td>
                                     </tr>
                                 </tbody>
                             </table>

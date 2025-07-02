@@ -189,7 +189,8 @@
 
 .img-cart{
     display: block;
-    width: 12rem;
+    width: 8rem;
+    margin: 0 auto;
 }
 
 .image-th{
@@ -220,4 +221,9 @@
     align-content: center;
     color: black;
     font-weight: 500;
+}
+
+.img-cart-summary{
+    display: block;
+    width: 8rem;
 }
