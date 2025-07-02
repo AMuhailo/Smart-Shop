@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.http.response import HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from shop.forms import CouponField
 from shop.models import Product
 from .cart import Cart
 from .form import CartField
@@ -26,5 +27,8 @@ def cart_detail(request):
     cart = Cart(request)
     for item in cart:
         item['item_override'] = CartField(initial={'quantity':item['quantity'], 'override':True})
-    return render(request, 'components/cart.html',{"cart":cart})
+    coupon_form = CouponField()
+    context = {"cart":cart,
+               'coupon_form':coupon_form}
+    return render(request, 'components/cart.html',context)
 # Create your views here.

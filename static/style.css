@@ -221,3 +221,8 @@
     color: black;
     font-weight: 500;
 }
+
+.img-cart-summary{
+    display: block;
+    width: 8rem;
+}

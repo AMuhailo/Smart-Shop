@@ -5,15 +5,7 @@
         <div class="div-product d-flex justify-content-center align-items-center h-100 flex-column ">
             <div class="product-blur h-50 w-25"></div>
             <div class="d-flex justify-content-center align-items-center h-50 flex-column inner-product">
-                <h1 class="fw-5 text-white text-center h-product">Order summary</h1>
-                <h6 class="fw-5 text-white text-center h-nav-product">
-                    <nav style="--bs-breadcrumb-divider: '>'; color: white;" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'categories_url' %}" class="breadcrumb-nav-page"><i class="bi bi-house-fill"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><a class="breadcrumb-nav-page fs-6">Order Order summary</a></li>
-                        </ol>
-                    </nav>
-                </h6>
+                <h1 class="fw-5 text-white text-center h-product">Order №{{ order.id}}</h1>
             </div>
         </div>
     </div>
@@ -34,7 +26,7 @@
                     <tbody>
                         {% for item in order.products.all %}
                             <tr class='table-light text-center align-content-center'>
-                                <th scope="row"><img src="{{ item.product.image.url }}" class="img-thumbnail img-cart"/></th>
+                                <th scope="row"><img src="{{ item.product.image.url }}" class="img-thumbnail img-cart-summary"/></th>
                                 <td class='text-start'>
                                     <h6>{{ item.product.name}}</h6>
                                     <p class='text-secondary' style='font-size:12px;'>{{item.product.description|truncatewords:50}}</p>
@@ -48,16 +40,10 @@
                         {% endfor %}
                         <tr class='table-secondary text-end'>
                             <th scope="row" colspan='4'>Total Price</th>
-                            <td scope="row">{{ order.get_total_cost|floatformat:2}}$</td>
+                            <td scope="row">{{ order.get_total_cost}}$</td>
                         </tr>
                     </tbody>
                 </table>
-                <p class='text-end  ms-auto w-100'>
-                    <form active="{% url 'payment:process'%}" method="POST">
-                        {% csrf_token %}
-                        <input type='submit' class='btn btn-success rounded-0' value='Pay'/>
-                    </form>
-                </p>
             </div>
         </div>
     </div>

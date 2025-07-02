@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product
+from .models import Category, Product, Coupon
 
 # Register your models here.
 class ProductInLine(admin.TabularInline):
@@ -18,3 +18,9 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ['name']
     list_filter = ['category','available']
     
+    
+@admin.register(Coupon)
+class CouponAdmin(admin.ModelAdmin):
+    list_display = ['code','valid_from','valid_to','discount','active']
+    list_filter = ['active','valid_from','valid_to']
+    search_fields = ['code']

@@ -20,67 +20,116 @@
     <div class="container-lg text-start p-5">
         <div class='row'>
             <div class='col-12'>
-                {% if cart %}
-                <h4 class="text-start pb-2 description-text">Products Cart</h4>
-                <table class="table table-secondary table-hover">
-                    <thead> 
-                        <tr class="table-secondary text-center">
-                            <th scope="col" class="image-th">Image</th>
-                            <th scope="col" style='width:24rem'>Name</th>
-                            <th scope="col" style='width:18rem'>Quantity</th>
-                            <th scope="col">Unit Price</th>
-                            <th scope="col">Price</th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                        {% for item in cart %}
-                            {% with product=item.product %}
-                                <tr class='table-light text-center align-content-center'>
-                                    <th scope="row"><img src="{{ product.image.url }}" class="img-thumbnail img-cart"/></th>
-                                    <td class='text-start'>
-                                        <h6>{{ product.name}}</h6>
-                                        <p class='text-secondary' style='font-size:12px;'>{{product.description|truncatewords:50}}</p>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex justify-content-start w-75">
-                                            <form action="{% url 'cart:cart_add' product.id%}" method="POST">
-                                                <div class="input-group mb-3">
-                                                    {% csrf_token %}
-                                                        {% for field in item.item_override %}
-                                                            {{ field}}
-                                                        {% endfor %}
-                                                    <button type="submit" class="btn text-dark rounded-0 "><i class="bi bi-arrow-clockwise"></i></button>                                                    
-                                                </div>  
-                                            </form> 
-                                            <form action="{% url 'cart:cart_remove' product.id %}" method="POST">
-                                                <div class="input-group mb-3">
-                                                    {% csrf_token %}
-                                                    <button type="submit" class="btn text-danger rounded-0 "><i class="bi bi-trash3"></i></button>
-                                                </div>  
-                                            </form> 
-                                        </div>
-                                    </td>
-                                    <td>{{ item.price }}$</td>
-                                    <td>{{ item.total_price }}$</td>
-                                </tr>
-                            {% endwith %}
-                        {% endfor %}
-                        <tr class='table-secondary text-end'>
-                            <th scope="row" colspan='4'>Total Price</th>
-                            <td scope="row">{{ cart.get_total_price}}$</td>
-                        </tr>
-                    </tbody>
-                </table>
                 <div class='row'>
-                    <div class='col-6'>
-                        <p class='text-start'>
-                            <a class='btn btn-sm btn-secondary rounded-0 w-25' href="{% url 'categories_url'%}">Continue</a>
-                        </p>
+                    <div class='col-12'>
+                        {% if cart %}
+                        <h4 class="text-start pb-2 description-text">Products Cart</h4>
+                        <table class="table table-secondary table-hover">
+                            <thead> 
+                                <tr class="table-secondary text-center">
+                                    <th scope="col" class="image-th">Image</th>
+                                    <th scope="col" style='width:24rem'>Name</th>
+                                    <th scope="col" style='width:18rem'>Quantity</th>
+                                    <th scope="col">Unit Price</th>
+                                    <th scope="col">Price</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+                                {% for item in cart %}
+                                    {% with product=item.product %}
+                                        <tr class='table-light text-center align-content-center'>
+                                            <th scope="row"><img src="{{ product.image.url }}" class="img-thumbnail img-cart"/></th>
+                                            <td class='text-start'>
+                                                <h6>{{ product.name}}</h6>
+                                                <p class='text-secondary' style='font-size:12px;'>{{product.description|truncatewords:50}}</p>
+                                            </td>
+                                            <td>
+                                                <div class="d-flex justify-content-start w-75">
+                                                    <form action="{% url 'cart:cart_add' product.id%}" method="POST">
+                                                        <div class="input-group mb-3">
+                                                            {% csrf_token %}
+                                                                {% for field in item.item_override %}
+                                                                    {{ field}}
+                                                                {% endfor %}
+                                                            <button type="submit" class="btn text-dark rounded-0 "><i class="bi bi-arrow-clockwise"></i></button>                                                    
+                                                        </div>  
+                                                    </form> 
+                                                    <form action="{% url 'cart:cart_remove' product.id %}" method="POST">
+                                                        <div class="input-group mb-3">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn text-danger rounded-0 "><i class="bi bi-trash3"></i></button>
+                                                        </div>  
+                                                    </form> 
+                                                </div>
+                                            </td>
+                                            <td>{{ item.price }}$</td>
+                                            <td>{{ item.total_price }}$</td>
+                                        </tr>
+                                    {% endwith %}
+                                {% endfor %}
+                                <tr class='table-secondary text-end'>
+                                    <th scope="row" colspan='4'>Total Price</th>
+                                    <td scope="row">{{ cart.get_total_price}}$</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class='col-6'>
-                        <p class='text-end'>
-                            <a class='btn btn-sm btn-secondary rounded-0 w-25' href="{% url 'orders:order_create'%}">Checkout</a>
-                        </p>
+                    <div class='col-4'>
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed text-uppercase fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Use coupon for purchase
+                                </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p>Enter the coupon name to get a discount on the product</p>
+                                        <form method="POST" action="{% url 'coupon_apply'%}">
+                                            <div class="input-group mb-3">
+                                                <button class="btn btn-outline-secondary" type="submit" id="button-addon1">Used</button>
+                                                {{ coupon_form.code }}
+                                            </div>
+                                            {% csrf_token %}
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-3 ms-auto'>
+                        <table class="table">
+                            <tbody>
+                                {% if cart.coupon %}
+                                    <tr>
+                                        <th scope="row">Discount</th>
+                                        <td>-{{cart.coupon.discount}}%</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">{{cart.coupon.code }}*</th>
+                                        <td>-{{cart.get_discount|floatformat:2}}$</td>
+                                    </tr>
+                                {% endif %}
+                                <tr>
+                                    <th scope="row">Total Price</th>
+                                    <td>{{cart.get_total_discount_price|floatformat:2}}$</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class='col-12'>
+                        <div class='row'>
+                            <div class='col-6'>
+                                <p class='text-start'>
+                                    <a class='btn btn-sm btn-secondary rounded-0 w-25' href="{% url 'categories_url'%}">Continue</a>
+                                </p>
+                            </div>
+                            <div class='col-6'>
+                                <p class='text-end'>
+                                    <a class='btn btn-sm btn-secondary rounded-0 w-25' href="{% url 'orders:order_create'%}">Checkout</a>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

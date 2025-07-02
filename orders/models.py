@@ -1,7 +1,8 @@
+from decimal import Decimal
 import uuid
 from django.db import models
-
-from shop.models import Product
+from django.core.validators import MinValueValidator, MaxValueValidator
+from shop.models import Coupon, Product
 
 # Create your models here.
 class Order(models.Model):
@@ -13,6 +14,8 @@ class Order(models.Model):
         ('card','Card'),
         ('delivery','Delivery'),
     ]
+    coupons = models.ForeignKey(Coupon, on_delete = models.SET_NULL, blank = True, null = True, related_name = 'orders_coupons')
+    discount = models.IntegerField(default = 0, validators = [MinValueValidator(0),MaxValueValidator(100)])
     first_name = models.CharField(max_length = 100)
     last_name = models.CharField(max_length = 100)
     email = models.EmailField()
@@ -33,7 +36,16 @@ class Order(models.Model):
         return f"Order №{str(self.id)}"
     
     def get_total_cost(self):
+        return self.get_total_cost_discount() - self.get_discount()
+    
+    def get_total_cost_discount(self):
         return sum(item.get_cost() for item in self.products.all())
+    
+    def get_discount(self):
+        total_cost = self.get_total_cost_discount()
+        if self.discount:
+            return total_cost * (self.discount / Decimal(100))
+        return Decimal(0)
     
 class OrderProduct(models.Model):
     order = models.ForeignKey(Order, on_delete = models.CASCADE, related_name = 'products')
