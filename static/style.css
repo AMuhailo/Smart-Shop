@@ -227,3 +227,82 @@
     display: block;
     width: 8rem;
 }
+.alert{
+    position: relative;
+}
+
+.icon-message{
+    position: absolute;
+}
+
+.min-price{
+    width: 50px;
+}
+
+/* Загальні стилі для контейнера фільтра */
+.price-filter {
+    font-family: sans-serif; /* Або ваш бажаний шрифт */
+    width: 300px; /* Приклад ширини, налаштуйте за потреби */
+    margin-bottom: 20px;
+}
+
+/* Стиль для заголовка "ЦІНА" */
+.price-label {
+    font-weight: bold;
+    color: #333; /* Темніший колір тексту */
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between; /* Для розміщення стрілки, якщо вона є */
+    align-items: center;
+}
+/* Якщо є стрілка, можна додати: */
+.price-label::after {
+    content: '⌵'; /* Символ стрілки вниз, або використовуйте іконку */
+    font-size: 0.8em;
+    margin-left: 5px;
+    color: #666;
+}
+
+
+/* Контейнер для двох інпутів, щоб вони були поруч */
+.price-inputs {
+    display: flex;
+    gap: 10px; /* Відстань між інпутами */
+}
+
+/* Обгортка для кожного інпута, щоб розмістити валюту та поле */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc; /* Тонка сіра рамка */
+    border-radius: 4px; /* Злегка заокруглені кути */
+    padding: 8px 10px; /* Внутрішні відступи */
+    background-color: #fff; /* Білий фон */
+    flex: 1; /* Щоб кожен інпут займав рівну частину простору */
+}
+
+/* Стиль для тексту "грн." */
+.currency {
+    color: #666; /* Сірий колір тексту */
+    margin-right: 5px; /* Відступ від інпута */
+    font-size: 0.9em; /* Трохи менший шрифт */
+}
+
+/* Стиль для самого поля вводу */
+.price-input {
+    border: none; /* Забираємо стандартну рамку інпута */
+    outline: none; /* Забираємо рамку при фокусі */
+    flex: 1; /* Щоб інпут займав весь доступний простір всередині обгортки */
+    padding: 0; /* Забираємо внутрішні відступи інпута, вони вже є в input-wrapper */
+    font-size: 1em; /* Розмір шрифту */
+    color: #333; /* Колір тексту, що вводиться */
+    text-align: right; /* Вирівнювання тексту по правому краю */
+}
+
+/* Стиль при фокусі, щоб показати, що поле активне */
+.input-wrapper:focus-within {
+    border-color: #66b3ff; /* Більш яскрава рамка при фокусі */
+    box-shadow: 0 0 0 2px rgba(102, 179, 255, 0.2); /* Легка тінь */
+}

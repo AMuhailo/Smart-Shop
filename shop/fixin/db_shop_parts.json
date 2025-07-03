@@ -1,0 +1,206 @@
+[
+{
+  "model": "shop.product",
+  "pk": 1,
+  "fields": {
+    "image": "product/Kolonist_Fbopf_tH56SxD.png",
+    "category": 1,
+    "name": "Kolonist FBOPF black tea",
+    "slug": "kolonist-fbopf-black-teanone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "2.20",
+    "available": true,
+    "created": "2025-07-02T21:17:42.006Z",
+    "updated": "2025-07-02T21:17:42.006Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 2,
+  "fields": {
+    "image": "product/Kolonist_GP-green_5qKrriZ.png",
+    "category": 1,
+    "name": "Kolonist Green GP green tea",
+    "slug": "kolonist-green-gp-green-teanone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "2.00",
+    "available": true,
+    "created": "2025-07-02T21:17:42.014Z",
+    "updated": "2025-07-02T21:17:42.014Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 3,
+  "fields": {
+    "image": "product/Kolonist_OPA_Earl_xw3QXbS.png",
+    "category": 1,
+    "name": "Kolonist black Earl Grey OPA tea",
+    "slug": "kolonist-black-earl-grey-opa-teanone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "1.80",
+    "available": true,
+    "created": "2025-07-02T21:17:42.016Z",
+    "updated": "2025-07-02T21:17:42.016Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 4,
+  "fields": {
+    "image": "product/Kolonist_OPA_WXfSORZ.png",
+    "category": 1,
+    "name": "Чай Kolonist OPA чорний",
+    "slug": "kolonist-opanone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "2.50",
+    "available": true,
+    "created": "2025-07-02T21:17:42.018Z",
+    "updated": "2025-07-02T21:17:42.018Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 5,
+  "fields": {
+    "image": "product/Kolonist_OPA-black_EZSGLPv.png",
+    "category": 1,
+    "name": "Kolonist ORA black tea",
+    "slug": "kolonist-ora-black-teanone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "2.10",
+    "available": true,
+    "created": "2025-07-02T21:17:42.021Z",
+    "updated": "2025-07-02T21:17:42.021Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 6,
+  "fields": {
+    "image": "product/Kolonist_PEKOE_black_Do2JYso.png",
+    "category": 1,
+    "name": "Kolonist Pekoe black tea",
+    "slug": "kolonist-pekoe-black-teanone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "1.60",
+    "available": true,
+    "created": "2025-07-02T21:17:42.022Z",
+    "updated": "2025-07-02T21:17:42.022Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 7,
+  "fields": {
+    "image": "product/bags-tea-lovare-fest-tea-set_grmb4j3.png",
+    "category": 2,
+    "name": "Lovare Fest Tea Set tea bag collection",
+    "slug": "lovare-fest-tea-set-tea-bag-collectionnone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "4.00",
+    "available": true,
+    "created": "2025-07-02T21:20:39.582Z",
+    "updated": "2025-07-02T21:20:39.582Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 8,
+  "fields": {
+    "image": "product/bags-tea-lovere-prime-tea-set_M5tdfwG.png",
+    "category": 2,
+    "name": "Lovare Prime Tea Set tea bag collection",
+    "slug": "lovare-prime-tea-set-tea-bag-collectionnone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "3.80",
+    "available": true,
+    "created": "2025-07-02T21:20:39.584Z",
+    "updated": "2025-07-02T21:20:39.584Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 9,
+  "fields": {
+    "image": "product/bags-tea-lovare-flowerstea_BS5nvLX.png",
+    "category": 2,
+    "name": "Lovare Flowers & Tea tea collection",
+    "slug": "lovare-flowers-tea-tea-collectionnone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "4.50",
+    "available": true,
+    "created": "2025-07-02T21:20:39.585Z",
+    "updated": "2025-07-02T21:20:39.585Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 10,
+  "fields": {
+    "image": "product/da-hong-pao-red-robe-pressed-tile_3WmN77E.png",
+    "category": 3,
+    "name": "Da Hong Pao Red Robe Pressed Tile",
+    "slug": "da-hong-pao-red-robe-pressed-tilenone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "1.80",
+    "available": true,
+    "created": "2025-07-02T21:23:00.104Z",
+    "updated": "2025-07-02T21:23:00.104Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 11,
+  "fields": {
+    "image": "product/pu-er-bing-cha-shen_TahwUtr.png",
+    "category": 3,
+    "name": "Pu-erh \"Bing-cha Shen\", green",
+    "slug": "pu-erh-bing-cha-shen-greennone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "1.40",
+    "available": true,
+    "created": "2025-07-02T21:23:00.107Z",
+    "updated": "2025-07-02T21:23:00.107Z"
+  }
+},
+{
+  "model": "shop.product",
+  "pk": 12,
+  "fields": {
+    "image": "product/Pressed-Pu-erh-Shen-Medal_CzZZs2t.png",
+    "category": 3,
+    "name": "\"Shen\" pressed pu-erh, green medal",
+    "slug": "shen-pressed-pu-erh-green-medalnone",
+    "description": "Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla lacus nec metus bibendum egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora torquent per conubia nostra inceptos himenaeos.",
+    "price": "0.80",
+    "available": true,
+    "created": "2025-07-02T21:23:00.109Z",
+    "updated": "2025-07-02T21:23:00.109Z"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 1,
+  "fields": {
+    "title": "Tea Leaf",
+    "slug": "tea-leafnone"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 2,
+  "fields": {
+    "title": "Tea Bags",
+    "slug": "tea-bagsnone"
+  }
+},
+{
+  "model": "shop.category",
+  "pk": 3,
+  "fields": {
+    "title": "Elite Tea",
+    "slug": "elite-teanone"
+  }
+}
+]

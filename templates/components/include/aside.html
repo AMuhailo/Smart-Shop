@@ -19,7 +19,6 @@
                 <div class="accordion-body">
                     <div class="col">
                         <label class="visually-hidden" for="searchField">Search</label>
-                        
                             <form action="{% url 'search_field' %}" method="get">
                                 <div class="input-group">
                                 <button type="submit" class="border search-btn">      
@@ -57,7 +56,15 @@
             </h2>
             <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the third item’s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It’s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    <form method="GET">
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="text" aria-label="Min Price" name='min_price' class="form-control" value='0'>
+                            <input type="text" aria-label="Max Price" name='max_price' class="form-control " value='200'>
+                            <span class="input-group-text">$</span>
+                        </div>
+                        <input type='submit' class='hidden' value='Used'/>
+                    </form>
                 </div>
             </div>
         </div>
