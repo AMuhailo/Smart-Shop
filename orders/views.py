@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import reverse
+
+from orders.tasks import task_order_create
 from .models import Order, OrderProduct 
 from cart.cart import Cart
 from .forms import OrderAdd
@@ -28,13 +30,12 @@ def order_create(request):
                     price=item['price']
                 )
             cart.clear()
-
+            task_order_create.delay(order.id)
             if order.paid == "delivery":
                 return redirect('orders:order_done')
             else:
                 request.session['order_id'] = order.id
                 return redirect(reverse('payment:process'))
-
     else:
         form = OrderAdd()
 

@@ -9,6 +9,8 @@ from orders.models import Order
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 
+from payment.tasks import task_paid_canceled, task_paid_success
+
 # Create your views here.
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -44,14 +46,21 @@ def payment_process(request):
                 'coupon':stripe_coupon.id
             }]
         session = stripe.checkout.Session.create(**session_data)
+        
         return redirect(session.url, code = 303)
     else:
         return render(request, 'components/payment/process.html',locals())
     
 def payment_completed(request):
+    order_id = request.session.get('order_id')
+    order = get_object_or_404(Order, id = order_id)
+    task_paid_success.delay(order.id)
     return render(request, 'components/payment/completed.html')
 
 def payment_canceled(request):
+    order_id = request.session.get('order_id')
+    order = get_object_or_404(Order, id = order_id)
+    task_paid_canceled.delay(order.id)
     return render(request, 'components/payment/canceled.html')
 
 @require_POST
